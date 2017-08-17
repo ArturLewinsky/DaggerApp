@@ -1,8 +1,10 @@
-package holidays.asuteam.websocketapp
+package holidays.asuteam.websocketapp.garbage
 
 import com.squareup.okhttp.OkHttpClient
 import dagger.Module
 import dagger.Provides
+import holidays.asuteam.websocketapp.garbage.Email
+import holidays.asuteam.websocketapp.garbage.EmailApi
 import javax.inject.Singleton
 
 @Module

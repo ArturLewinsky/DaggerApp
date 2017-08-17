@@ -1,4 +1,4 @@
-package holidays.asuteam.websocketapp
+package holidays.asuteam.websocketapp.garbage
 
 import dagger.Module
 import javax.inject.Inject

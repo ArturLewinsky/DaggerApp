@@ -16,11 +16,13 @@ class NetworkModule {
         this.mBaseUrl = baseUrl
     }
 
+    @Singleton
     @Provides
     fun provideRxJava2CallAdapterFactory() : RxJava2CallAdapterFactory {
         return RxJava2CallAdapterFactory.create()
     }
 
+    @Singleton
     @Provides
     fun provideGsonConverterFactory() : GsonConverterFactory {
         return GsonConverterFactory.create()
@@ -32,6 +34,7 @@ class NetworkModule {
         return Retrofit.Builder()
                 .baseUrl(mBaseUrl)
                 .addConverterFactory(gsonConverterFactory)
+                .addCallAdapterFactory(callAdapterFactory)
                 .build()
     }
 }

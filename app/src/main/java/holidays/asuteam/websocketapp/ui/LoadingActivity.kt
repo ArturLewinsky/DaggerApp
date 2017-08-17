@@ -1,9 +1,10 @@
-package holidays.asuteam.websocketapp
+package holidays.asuteam.websocketapp.ui
 
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import holidays.asuteam.websocketapp.R
 
 class LoadingActivity : AppCompatActivity() {
 

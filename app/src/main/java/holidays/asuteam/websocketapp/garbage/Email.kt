@@ -1,10 +1,10 @@
-package holidays.asuteam.websocketapp
+package holidays.asuteam.websocketapp.garbage
 
 class Email {
     var client : EmailApi
     var emailURL : String
 
-    constructor(client: EmailApi , emailURL: String) {
+    constructor(client: EmailApi, emailURL: String) {
         this.client = client
         this.emailURL = emailURL
     }

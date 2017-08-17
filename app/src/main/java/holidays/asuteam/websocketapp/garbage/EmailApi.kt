@@ -1,4 +1,4 @@
-package holidays.asuteam.websocketapp
+package holidays.asuteam.websocketapp.garbage
 
 import com.squareup.okhttp.OkHttpClient
 

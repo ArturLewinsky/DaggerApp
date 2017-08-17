@@ -13,5 +13,4 @@ class ApiModule {
     fun usersService(retrofit : Retrofit) : UsersService {
         return retrofit.create(UsersService::class.java)
     }
-
 }
