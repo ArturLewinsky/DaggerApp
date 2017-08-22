@@ -10,7 +10,7 @@ class ApiModule {
 
     @Provides
     @CustomScope
-    fun usersService(retrofit : Retrofit) : UsersService {
+    fun usersService(retrofit: Retrofit): UsersService {
         return retrofit.create(UsersService::class.java)
     }
 }

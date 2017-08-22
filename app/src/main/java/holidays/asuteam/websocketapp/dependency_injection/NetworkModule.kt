@@ -10,27 +10,27 @@ import javax.inject.Singleton
 
 @Module
 class NetworkModule {
-    private var mBaseUrl : String
+    private var mBaseUrl: String
 
-    constructor(baseUrl : String) {
+    constructor(baseUrl: String) {
         this.mBaseUrl = baseUrl
     }
 
     @Singleton
     @Provides
-    fun provideRxJava2CallAdapterFactory() : RxJava2CallAdapterFactory {
+    fun provideRxJava2CallAdapterFactory(): RxJava2CallAdapterFactory {
         return RxJava2CallAdapterFactory.create()
     }
 
     @Singleton
     @Provides
-    fun provideGsonConverterFactory() : GsonConverterFactory {
+    fun provideGsonConverterFactory(): GsonConverterFactory {
         return GsonConverterFactory.create()
     }
 
     @Singleton
     @Provides
-    fun provideRetrofit(gsonConverterFactory : GsonConverterFactory, callAdapterFactory : RxJava2CallAdapterFactory) : Retrofit {
+    fun provideRetrofit(gsonConverterFactory: GsonConverterFactory, callAdapterFactory: RxJava2CallAdapterFactory): Retrofit {
         return Retrofit.Builder()
                 .baseUrl(mBaseUrl)
                 .addConverterFactory(gsonConverterFactory)

@@ -2,9 +2,14 @@ package holidays.asuteam.websocketapp.service
 
 import holidays.asuteam.websocketapp.model.UsersModel
 import io.reactivex.Observable
-import retrofit2.http.GET
 
-interface UsersService {
-    @GET("/posts/1")
+
+interface UserViewInterface  {
+    fun onCompleted()
+
+    fun onError(message: String)
+
+    fun onUsers(usersModel: List<UsersModel>)
+
     fun getUsers(): Observable<List<UsersModel>>
 }

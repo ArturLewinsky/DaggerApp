@@ -7,11 +7,11 @@ import com.google.gson.annotations.Expose
  */
 class UsersModel {
     @Expose
-    var userId : Int? = null
+    var userId: Int? = null
     @Expose
-    var id : Int? = null
+    var id: Int? = null
     @Expose
-    var title : String? = null
+    var title: String? = null
     @Expose
-    var body : String? = null
+    var body: String? = null
 }

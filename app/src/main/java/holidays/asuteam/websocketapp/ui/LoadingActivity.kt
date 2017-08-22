@@ -12,7 +12,7 @@ class LoadingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loading)
 
-        val intent : Intent = Intent(this, MainActivity::class.java)
+        val intent: Intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }

@@ -6,6 +6,6 @@ package holidays.asuteam.websocketapp.model
 
 class Constant {
     companion object {
-        val BASE_URL : String = "https://jsonplaceholder.typicode.com"
+        val BASE_URL: String = "https://jsonplaceholder.typicode.com"
     }
 }

@@ -9,5 +9,5 @@ import holidays.asuteam.websocketapp.ui.MainActivity
         dependencies = arrayOf (NetworkComponent::class))
 
 interface ApiComponent {
-    fun inject(activity : MainActivity)
+    fun inject(activity: MainActivity)
 }

@@ -1,6 +1,6 @@
 package holidays.asuteam.websocketapp.dependency_injection
 
-import java.lang.annotation.RetentionPolicy
+
 import javax.inject.Scope
 
 

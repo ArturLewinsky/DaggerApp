@@ -1,34 +1,38 @@
 package holidays.asuteam.websocketapp.application
 
+
 import android.app.Application
+
 import holidays.asuteam.websocketapp.dependency_injection.*
 import holidays.asuteam.websocketapp.model.Constant
 
 
-class UsersApplication : Application() {
+class UsersApplication : Application(){
 
-    private lateinit var mApiComponent : ApiComponent
+
+    private lateinit var mApiComponent: ApiComponent
 
     override fun onCreate() {
-        super.onCreate()
+
         resolveDependency()
+        super.onCreate()
     }
 
     private fun resolveDependency() {
-        var component : ApiComponent = DaggerApiComponent
+        mApiComponent = DaggerApiComponent
                 .builder()
-                .networkComponent(getNetworkCOmponent())
+                .networkComponent(getNetworkComponent())
                 .build()
     }
 
-    fun getNetworkCOmponent() : NetworkComponent{
+    fun getNetworkComponent(): NetworkComponent{
         return DaggerNetworkComponent
                 .builder()
                 .networkModule(NetworkModule(Constant.BASE_URL))
                 .build()
     }
 
-    fun getApiComponent() : ApiComponent {
+    fun getApiComponent(): ApiComponent {
         return mApiComponent
     }
 }
