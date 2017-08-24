@@ -5,6 +5,6 @@ import io.reactivex.Observable
 import retrofit2.http.GET
 
 interface UsersService {
-    @GET("/posts/1")
+    @GET("/posts")
     fun getUsers(): Observable<List<UsersModel>>
 }

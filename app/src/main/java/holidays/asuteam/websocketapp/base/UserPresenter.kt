@@ -2,14 +2,10 @@ package holidays.asuteam.websocketapp.base
 
 import holidays.asuteam.websocketapp.model.UsersModel
 import holidays.asuteam.websocketapp.service.UserViewInterface
-import io.reactivex.Observer
-import io.reactivex.disposables.Disposable
+import io.reactivex.observers.DisposableObserver
 
 
-
-
-class UserPresenter : BasePresenter, Observer<List<UsersModel>>{
-
+class UserPresenter : BasePresenter{
 
     private var mViewInterface : UserViewInterface
 
@@ -17,25 +13,22 @@ class UserPresenter : BasePresenter, Observer<List<UsersModel>>{
         this.mViewInterface = userViewInterface
     }
 
-
-    override fun onNext(usersModel: List<UsersModel>) {
-        mViewInterface.onUsers(usersModel)
-    }
-
-    override fun onSubscribe(d: Disposable) {
-    }
-
-    override fun onComplete() {
-        mViewInterface.onCompleted()
-    }
-
-    override fun onError(e: Throwable) {
-        mViewInterface.onError(e.toString())
-    }
-
-
     fun fetchUsers() {
         unSubscribeAll()
-        subscribe(mViewInterface.getUsers(), this@UserPresenter  )
+        subscribe(mViewInterface.getUsers(), object : DisposableObserver<List<UsersModel>>() {
+            override fun onComplete() {
+                mViewInterface.onCompleted()
+            }
+
+            override fun onError(e: Throwable) {
+                mViewInterface.onError(e.toString())
+
+            }
+
+            override fun onNext(userModel : List<UsersModel> ) {
+                mViewInterface.onUsers(userModel)
+            }
+        })
+
     }
 }

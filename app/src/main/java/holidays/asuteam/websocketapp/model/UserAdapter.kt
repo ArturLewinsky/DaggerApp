@@ -4,11 +4,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.View
-import android.widget.ImageView
 import holidays.asuteam.websocketapp.R
 import android.widget.TextView
-
-
 
 
 open class UserAdapter : RecyclerView.Adapter<UserAdapter.Holder> {
@@ -29,7 +26,12 @@ open class UserAdapter : RecyclerView.Adapter<UserAdapter.Holder> {
         return Holder(mInflater.inflate(R.layout.item_user, parent, false))
     }
 
-    override fun onBindViewHolder(holder: Holder ,position: Int ) {
+    override fun onBindViewHolder(holder: Holder , position: Int ) {
+        val currFlower = mUsersList.get(position)
+
+        holder.mName.setText(currFlower.body)
+        holder.mPrice.setText(currFlower.title)
+
 
     }
 
@@ -44,18 +46,19 @@ open class UserAdapter : RecyclerView.Adapter<UserAdapter.Holder> {
 
     inner class Holder : RecyclerView.ViewHolder, View.OnClickListener {
 
-        var mPhoto: ImageView
+
         var mName: TextView
         var mPrice: TextView
 
         constructor(itemView : View) : super(itemView) {
-            mPhoto = itemView.findViewById<View>(R.id.flowerPhoto) as ImageView
+
             mName = itemView.findViewById<View>(R.id.flowerName) as TextView
             mPrice = itemView.findViewById<View>(R.id.flowerPrice) as TextView
             itemView.setOnClickListener(this)
         }
 
         override fun onClick(p0: View?) {
+            mListener.onClick(getLayoutPosition(), mUsersList.get(getAdapterPosition()).toString())
 
         }
     }

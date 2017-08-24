@@ -17,21 +17,21 @@ import android.support.v7.widget.LinearLayoutManager
 import butterknife.ButterKnife
 import holidays.asuteam.websocketapp.model.UserAdapter
 import android.app.ProgressDialog
-import android.widget.Toast
 
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity(), UserViewInterface, UserAdapter.UserClickListener {
 
 
     @Inject
-    lateinit var mService : UsersService
+    lateinit var mService : UsersService // pobranie danych
 
     @BindView(R.id.recyclerView)
     lateinit var mRecyclerView: RecyclerView
 
-    private lateinit var  mAdapter: UserAdapter
+    private lateinit var  mAdapter: UserAdapter // Holder
     private lateinit var mDialog: ProgressDialog
-    private lateinit var mPresenter: UserPresenter
+    private lateinit var mPresenter: UserPresenter // DI
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity(), UserViewInterface, UserAdapter.UserCli
         ButterKnife.bind(MainActivity@this)
         configViews()
         mPresenter = UserPresenter(MainActivity@this)
+
         mPresenter.onCreate()
     }
 
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity(), UserViewInterface, UserAdapter.UserCli
 
     override fun onError(message: String) {
         mDialog.dismiss()
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(getApplicationContext(), message + "This is fucking error", Toast.LENGTH_LONG).show()
     }
 
     override fun onCompleted() {
@@ -83,12 +84,13 @@ class MainActivity : AppCompatActivity(), UserViewInterface, UserAdapter.UserCli
         this.mRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         this.mRecyclerView.setHasFixedSize(true)
         this.mRecyclerView.itemAnimator = DefaultItemAnimator()
+        this.
         mAdapter = UserAdapter(this, layoutInflater)
         this.mRecyclerView.adapter = mAdapter
     }
 
     override fun onClick(position: Int, name: String) {
-        Toast.makeText(getApplicationContext(), "You clicked on " + name, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "You clicked on " + name, Toast.LENGTH_SHORT).show()
     }
 }
 

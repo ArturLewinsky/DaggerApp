@@ -43,14 +43,14 @@ abstract class BasePresenter : Presenter {
         }
     }
 
-    protected fun <F> subscribe(observable: Observable<F>, observer: Observer<F>) {
+    protected fun <F> subscribe(observable: Observable<F>, observer: DisposableObserver<F>) {
 
-        observer.
+
         val subscription = observable
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribeWith(observer)
-
+            observable.toString()
         configureSubscription()!!.add(subscription)
     }
 }
